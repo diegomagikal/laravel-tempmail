@@ -1,0 +1,51 @@
+{
+    "name": "diegomagikal/laravel-tempmail",
+    "type": "library",
+    "description": "Validator to block emails from temp mail services",
+    "keywords": [
+        "DiegoMagikal",
+        "tempmail",
+        "security",
+        "fake",
+        "fakemail"
+    ],
+    "homepage": "https://github.com/diegomagikal/laravel-tempmail",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": ":Diego Luiz",
+            "email": "diego@magikal.com.br",
+            "homepage": "http://magikal.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : "~5.6|~7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "~4.0||~5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "DiegoMagikal\\CheckTempMail\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "DiegoMagikal\\CheckTempMail\\Test": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "DiegoMagikal\\CheckTempMail\\CheckTempMailServiceProvider"
+            ]
+        }
+    }
+}
