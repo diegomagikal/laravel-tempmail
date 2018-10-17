@@ -36,6 +36,29 @@ protected function validator(array $data)
 ```
 ![tempmail](https://user-images.githubusercontent.com/16082344/47108547-587b5980-d222-11e8-8c67-25144f20cf86.JPG)
 
+
+### Custom message / translation
+Add 'tempmail' key to resources/lang/{YOUR_LANG}/validation.php with the desired message.
+
+```php
+ 	/*
+    |--------------------------------------------------------------------------
+    | Custom Validation Language Lines
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify custom validation messages for attributes using the
+    | convention "attribute.rule" to name the lines. This makes it quick to
+    | specify a specific custom language line for a given attribute rule.
+    |
+    */
+
+
+    'tempmail' => 'Este tipo de e-email não é aceito. Digite seu email real!',
+```
+![tempmail-pt](https://user-images.githubusercontent.com/16082344/47112320-63d38280-d22c-11e8-8bd1-7b6e859335a3.JPG)
+
+
+
 ### Blocked services (growing)
 
 All the domains of the following providers are blocked:
