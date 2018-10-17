@@ -37,17 +37,22 @@ class CheckTempMailServiceProvider extends ServiceProvider
     public function boot()
     {
         Validator::extend('tempmail', function ($attribute, $value, $parameters, $validator) {
+            
             list($name, $domain) = explode("@", $value);
-            $path = realpath(__DIR__ . '/../resources/config/tempmaildomains.txt');
-            $cache_key = md5_file($path);
-            $data = Cache::rememberForever('CheckTempMail_list_' . $cache_key, function () use ($path) {
+            $temp   = explode(".", $domain);
+            $tld    = end($temp);
+            $path   = realpath(__DIR__ . '/../resources/config/tempmaildomains.txt');
+            $cachek = md5_file($path);
+            
+            $data   = Cache::rememberForever('CheckTempMail_list_' . $cachek, function () use ($path) {
                 return collect(explode("\n", file_get_contents($path)));
             });
             
-            $data->contains(function($value, $key) use($domain){
-                return !(trim($value) == $domain);
+            $data->contains(function($value, $key) use($domain, $tld){
+                $value = trim($value);
+                return !($value == $domain) && !($value == "*.$tld");
             });
-            
+
         }, $this->message);
     }
 
