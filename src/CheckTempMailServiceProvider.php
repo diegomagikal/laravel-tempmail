@@ -13,6 +13,7 @@ namespace DiegoMagikal\CheckTempMail;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Lang;
 use Validator;
 
 class CheckTempMailServiceProvider extends ServiceProvider
@@ -53,7 +54,7 @@ class CheckTempMailServiceProvider extends ServiceProvider
                 return !($value == $domain) && !($value == "*.$tld");
             });
 
-        }, $this->message);
+        }, Lang::has("validation.tempmail") ? trans("validation.tempmail") : $this->message);
     }
 
     /**
