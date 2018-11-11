@@ -49,9 +49,9 @@ class CheckTempMailServiceProvider extends ServiceProvider
                 return collect(explode("\n", file_get_contents($path)));
             });
             
-            $data->contains(function($value, $key) use($domain, $tld){
-                $value = trim($value);
-                return !($value == $domain) && !($value == "*.$tld");
+            return
+            !$data->contains(function($value, $key) use($domain, $tld){
+                return ($value == $domain) || ($value == "*.$tld");
             });
 
         }, Lang::has("validation.tempmail") ? trans("validation.tempmail") : $this->message);
